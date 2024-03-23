@@ -1,0 +1,86 @@
+//Write a java program for simple calculator with advance features, which implements a simple calculator with advanced features such as addition, subtraction, multiplication, division, exponentiation, and the option to quit. Study the code and explain how the program works, including its main features and functionality. Additionally, Imagine you've been tasked with creating comprehensive documentation for a java project.Your documentation should include detailed explanations of the code along with images illustrating the program's execution and user interactions.
+import java.util.*;
+
+class Calculator { // creating a class
+    public double add(double num1, double num2) { // addition
+        return num1 + num2;
+    }
+
+    public double subtract(double num1, double num2) { // subtraction
+        return num1 - num2;
+    }
+
+    public double multiply(double num1, double num2) { // multiplcation
+        return num1 * num2;
+    }
+
+    public double divide(double num1, double num2) { // division
+        if (num2 == 0) {
+            System.out.println("Number can't be '0' ");
+            return Double.NaN;
+        }
+        return num1 / num2;
+    }
+
+    public double power(double base, double exponent) { // exponiential
+        return Math.pow(base, exponent);
+    }
+}
+
+public class task {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        Calculator calculator = new Calculator(); // calling object
+
+        
+        System.out.println("Welcome to Calculator"); // Display
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Division");
+        System.out.println("5. Exponentiation");
+        System.out.println("6. Quit");
+
+        System.out.println("Enter the choice(1-6):");
+        int choice = sc.nextInt();
+
+        while (choice >= 1 && choice <= 5) {
+            double num1, num2, result;
+            System.out.println("Enter the first number");
+            num1 = sc.nextDouble();
+            System.out.println("Enter the second number");
+            num2 = sc.nextDouble();
+
+            switch (choice) { // using switch case statement
+                case 1:
+                    result = calculator.add(num1, num2); // for addition
+                    System.out.println("Result " + result);
+                    break;
+                case 2:
+                    result = calculator.subtract(num1, num2); // for subtraction
+                    System.out.println("Result: " + result);
+                    break;
+                case 3:
+                    result = calculator.multiply(num1, num2); // for multiply
+                    System.out.println("Result: " + result);
+                    break;
+                case 4:
+                    result = calculator.divide(num1, num2); // for division
+                    if (!Double.isNaN(result)) {
+                        System.out.println("Result " + result);
+                    }
+                    break;
+                case 5:
+                    result = calculator.power(num1, num2); // for exponiential
+                    System.out.println("Result: " + result);
+                    break;
+            }
+            System.out.println("Select an operation or Quit:"); // input
+            choice = sc.nextInt();
+
+        }
+        System.out.println("Thanks for using <3....."); // exit
+        sc.close(); // closing scanner class
+
+    }
+}
